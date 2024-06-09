@@ -1,4 +1,4 @@
 ﻿using BenchmarkDotNet.Running;
-using dotnet_benchmarks.Benchmarks;
+using dotnet_benchmarks.Benchmarks.LinQ;
 
-var summary = BenchmarkRunner.Run<ArrayFirstLastBenchmarks>();
+var summary = BenchmarkRunner.Run<SelectManyVsTwoLoopBenchmarks>();

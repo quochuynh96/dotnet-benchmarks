@@ -1,11 +1,11 @@
 using BenchmarkDotNet.Attributes;
 
-namespace dotnet_benchmarks.Benchmarks;
+namespace dotnet_benchmarks.Benchmarks.LinQ;
 
 [MemoryDiagnoser]
-public class ArrayFirstLastBenchmarks
+public class ArrayFirstLastVsUsingIndexBenchmarks
 {
-    private const int _SIZE = 1_000_000;
+    private const int _SIZE = 1000000;
     private readonly int[] _array = new int[_SIZE];
 
     [GlobalSetup]
