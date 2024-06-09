@@ -1,0 +1,44 @@
+﻿using BenchmarkDotNet.Attributes;
+
+namespace dotnet_benchmarks.Benchmarks.LinQ;
+
+[MemoryDiagnoser]
+public class ListFirstLastBenchmarks
+{
+    private const int SIZE = 1_000_000;
+    private static readonly List<int> _list = new List<int>(SIZE);
+
+    static ListFirstLastBenchmarks()
+    {
+        var random = new Random(2024);
+
+        for (int i = 0; i < SIZE; i++)
+        {
+            _list.Add(random.Next());
+        }
+    }
+
+    [Benchmark]
+    public void FirstUsingLinq()
+    {
+        _ = _list.First();
+    }
+
+    [Benchmark]
+    public void FirstUsingIndex()
+    {
+        _ = _list[0];
+    }
+
+    [Benchmark]
+    public void LastUsingLinq()
+    {
+        _ = _list.Last();
+    }
+
+    [Benchmark]
+    public void LastUsingIndex()
+    {
+        _ = _list[_list.Count - 1];
+    }
+}

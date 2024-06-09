@@ -40,4 +40,16 @@ public class TryGetValueVsContainKeyBenchmarks
             _ = _dictionary[_key];
         }
     }
+    
+    [Benchmark]
+    public void TryCatch()
+    {
+        try
+        {
+            var result = _dictionary[_key];
+        }
+        catch(KeyNotFoundException)
+        {
+        }
+    }
 }
